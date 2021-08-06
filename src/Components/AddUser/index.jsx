@@ -67,6 +67,7 @@ const AddUser = () => {
         alert("Thêm thành công!!!");
         // thêm thành công thì tắt popup
         dispatch(createAction(actionTypes.SET_OPEN, false));
+        dispatch(createAction(actionTypes.SET_PAGE, 1));
         dispatch(fetchUserList(1));
     }, [dispatch]);
 

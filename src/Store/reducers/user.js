@@ -6,6 +6,7 @@ const initialState = {
     open: false,
     isEdit: false,
     userEdit: null,
+    page: 1,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -24,6 +25,9 @@ const reducer = (state = initialState, { type, payload }) => {
             return { ...state };
         case actionTypes.SET_USER_EDIT:
             state.userEdit = payload;
+            return { ...state };
+        case actionTypes.SET_PAGE:
+            state.page = payload;
             return { ...state };
         default:
             return state;

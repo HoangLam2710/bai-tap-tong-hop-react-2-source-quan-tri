@@ -4,4 +4,5 @@ export const actionTypes = {
     SET_EDIT: "SET_EDIT",
     SET_USER_EDIT: "SET_USER_EDIT",
     SET_USER: "SET_USER",
+    SET_PAGE: "SET_PAGE",
 };

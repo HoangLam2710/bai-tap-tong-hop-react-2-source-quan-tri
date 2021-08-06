@@ -36,6 +36,10 @@ const User = () => {
         return state.user.isEdit;
     });
 
+    const page = useSelector((state) => {
+        return state.user.page;
+    });
+
     const handleOpen = useCallback(
         (edit, item = {}) => {
             // thực hiển việc mở popup
@@ -54,8 +58,9 @@ const User = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(fetchUserList(1));
-    }, [dispatch]);
+        console.log(page);
+        dispatch(fetchUserList(page));
+    }, [dispatch, page]);
 
     const userList = useSelector((state) => {
         return state.user.userList;
@@ -63,15 +68,17 @@ const User = () => {
 
     const hanldChangePage = useCallback(
         (event, value) => {
+            dispatch(createAction(actionTypes.SET_PAGE, value));
             dispatch(fetchUserList(value));
+            window.scroll({ top: 0, behavior: "smooth" });
         },
         [dispatch]
     );
 
     const alertDelete = useCallback(() => {
         alert("Xoá thành công!!!");
-        dispatch(fetchUserList(1));
-    }, [dispatch]);
+        dispatch(fetchUserList(page));
+    }, [dispatch, page]);
 
     const deleteUser = useCallback(
         (user) => {
@@ -173,6 +180,7 @@ const User = () => {
                 count={userList?.totalPages}
                 onChange={hanldChangePage}
                 className={classes.pagination}
+                defaultPage={page}
             />
         </Container>
     );

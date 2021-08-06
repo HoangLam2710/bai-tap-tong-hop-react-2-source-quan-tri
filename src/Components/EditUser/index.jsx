@@ -47,6 +47,10 @@ const EditUser = () => {
         return state.user.userEdit;
     });
 
+    const page = useSelector((state) => {
+        return state.user.page;
+    });
+
     const formik = useFormik({
         initialValues: {
             taiKhoan: userEdit.taiKhoan,
@@ -71,8 +75,8 @@ const EditUser = () => {
         alert("Cập nhật thành công!!!");
         // thêm thành công thì tắt popup
         dispatch(createAction(actionTypes.SET_OPEN, false));
-        dispatch(fetchUserList(1));
-    }, [dispatch]);
+        dispatch(fetchUserList(page));
+    }, [dispatch, page]);
 
     const handleSubmit = useCallback(
         (e) => {
