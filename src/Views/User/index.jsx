@@ -58,7 +58,6 @@ const User = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log(page);
         dispatch(fetchUserList(page));
     }, [dispatch, page]);
 
